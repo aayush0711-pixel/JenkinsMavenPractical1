@@ -1,6 +1,6 @@
 
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello! Jenkins Maven Build Successful.");
+        System.out.println("Jenkins Poll SCM Test Successful");
     }
 }
