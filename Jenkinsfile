@@ -1,42 +1,66 @@
 
-node {
-    stage('Checkout') {
-        checkout scm
-    }
+pipeline {
+    agent any
 
-    stage('Validate') {
-        bat 'mvn validate'
-    }
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
 
-    stage('Compile') {
-        bat 'mvn compile'
-    }
+        stage('Validate') {
+            steps {
+                bat 'mvn validate'
+            }
+        }
 
-    stage('Test') {
-        bat 'mvn test'
-    }
+        stage('Compile') {
+            steps {
+                bat 'mvn compile'
+            }
+        }
 
-    stage('Package') {
-        bat 'mvn package'
-    }
+        stage('Test') {
+            steps {
+                bat 'mvn test'
+            }
+        }
 
-    stage('Verify') {
-        bat 'mvn verify'
-    }
+        stage('Package') {
+            steps {
+                bat 'mvn package'
+            }
+        }
 
-    stage('Install') {
-        bat 'mvn install'
-    }
+        stage('Verify') {
+            steps {
+                bat 'mvn verify'
+            }
+        }
 
-    stage('Clean') {
-        bat 'mvn clean'
-    }
+        stage('Install') {
+            steps {
+                bat 'mvn install'
+            }
+        }
 
-    stage('Site') {
-        bat 'mvn site'
-    }
+        stage('Clean') {
+            steps {
+                bat 'mvn clean'
+            }
+        }
 
-    stage('Deploy') {
-        echo 'Remote Maven repository is not configured; deployment skipped.'
+        stage('Site') {
+            steps {
+                bat 'mvn site'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Remote Maven repository is not configured; deployment skipped.'
+            }
+        }
     }
 }
