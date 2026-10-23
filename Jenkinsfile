@@ -1,5 +1,9 @@
 
 node {
+    stage('Checkout') {
+        checkout scm
+    }
+
     stage('Validate') {
         bat 'mvn validate'
     }
@@ -33,6 +37,6 @@ node {
     }
 
     stage('Deploy') {
-        echo 'Deploy requires a configured remote Maven repository.'
+        echo 'Remote Maven repository is not configured; deployment skipped.'
     }
 }
